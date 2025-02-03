@@ -6,10 +6,13 @@
 </head>
 <body>
     <h1>Регистрация</h1>
-    <form method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <table>
+            {{ form.as_p }}
+        </table>
         <button type="submit">зарегистрироваться</button>
     </form>
+    <a href="/login/">если зарегистртрованы, выполните вход в аккаунт</a>
 </body>
 </html>

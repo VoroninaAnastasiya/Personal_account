@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <style> body { background-color: #f4f4f4; } </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Профиль пользователя</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <form method="post">
+        {% csrf_token %}
+        {% for a in image %}
+            {% if not a.is_main %}
+                <p>картинка</p>
+               <input type="radio" value="{{a.id}}" name="image_id"> <img src="{{a.image.url}}">
+            {% endif %}
+        {% endfor %}
+            <button type="submit" name="delete_image"> Удалить картинку </button>
+            <button type="submit" name="delete_main_image"> Удалить главную картинку </button>
+            <button type="submit" name="make_main_image"> Назначить главную картинку </button>
+    </form>
+
+    <p>Имя: {{profile.first_name}}</p>
+    <p>Возраст {{profile.date_birth}}</p>
+    <p>Информация обо мне {{profile.info_about_user}}</p>
+    {% for a in image %}
+        {% if a.is_main %}
+            <p>картинка</p>
+           <img src="{{a.image.url}}">
+        {% endif %}
+    {% endfor %}
+    <a href="/main/">На главную</a>
+    <a href="/user_logout/">Выйти</a>
+</body>
+</html>

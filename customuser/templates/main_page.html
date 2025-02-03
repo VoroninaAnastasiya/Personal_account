@@ -5,7 +5,13 @@
     <title>Добро пожаловать!</title>
 </head>
 <body>
+{% if user.is_authenticated %}
+<a href="/profile/">Профиль пользователя</a>
+<a href="/user_logout/">Выйти</a>
+{% else %}
     <a href="/register/">Зарегистрироваться</a>
     <a href="/login/">Войти</a>
+{% endif %}
+
 </body>
 </html>

@@ -1,0 +1,15 @@
+[{
+"email": "voron@mail.ru",
+"password1": "123456",
+"password2": "123456"
+}
+,
+{
+"email": "voron6@mail.ru",
+"password1": "666666",
+"password2": "666666"
+},
+{
+"email": "voron6@mail.ru",
+"password": "666666"
+}]
