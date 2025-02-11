@@ -15,6 +15,7 @@
         <button type="submit">Сохранить</button>
     </form>
     <form method="post">
+        <div class="profile_type"></div>
         {% csrf_token %}
         {% for a in image %}
             {% if not a.is_main %}

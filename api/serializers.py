@@ -68,12 +68,17 @@ class UserLoginSerializer(serializers.Serializer):
         data['user'] = user
         return data
 
+class UserImageSerializer(serializers.Serializer):
+    image = serializers.ImageField()
+    is_main = serializers.BooleanField()
+
 
 class ProfileUserSerializer(serializers.Serializer):
     """Серилизатор для профиля пользователя"""
     first_name = serializers.CharField(max_length=500, required=False)
     date_birth = serializers.DateField(required=False)
     info_about_user = serializers.CharField(max_length=500, required=False)
+    userimage_set = UserImageSerializer(many=True)
     user = UserLoginSerializer()
 
     def validate_birth_date(self, value):
@@ -114,6 +119,16 @@ class NewProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewProduct
         fields = ['name', 'price']
+
+
+class UpdateDataUserSerializer(serializers.Serializer):
+    """"""
+    first_name = serializers.CharField(max_length=500, required=False, allow_blank=True)
+    date_birth = serializers.DateField(required=False)
+    info_about_user = serializers.CharField(max_length=500, required=False, allow_blank=True)
+    # userimage_set = UserImageSerializer(required=False)
+    # user = UserLoginSerializer()
+
 
 
 

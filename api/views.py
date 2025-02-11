@@ -9,7 +9,8 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from customuser.models import ProfileUser, UserImage, NewProduct
-from .serializers import UserRegisterSerializer, NewProductSerializer, UserLoginSerializer, ProfileUserSerializer
+from .serializers import UserRegisterSerializer, NewProductSerializer, UserLoginSerializer, ProfileUserSerializer, \
+    UpdateDataUserSerializer
 
 
 @api_view(['POST'])
@@ -79,6 +80,20 @@ def get_user_profile(request):
             return Response({'errors': e.detail}, status=400)
         else:
             return Response(serializer.data)
+
+@api_view(['POST'])
+def update_data(request):
+    if request.method == 'POST':
+        serializer = UpdateDataUserSerializer(data=request.data)
+        print(serializer)
+        if serializer.is_valid():
+            print("+++++")
+            print(serializer.validated_data)
+            return Response(serializer.data)
+        else:
+            print(serializer.errors)
+        return  Response({'message': 'ok'})
+
 
 # @api_view(['POST'])
 # @permission_classes([AllowAny])

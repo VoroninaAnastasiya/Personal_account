@@ -39,7 +39,7 @@ form textarea {
     box-sizing: border-box;
 }
 
-form button {
+.form button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -51,7 +51,7 @@ form button {
     font-size: 16px;
 }
 
-form button:hover {
+.form button:hover {
     background-color: #45a049;
 }
 
@@ -60,10 +60,14 @@ p {
     color: #333;
 }
 
-img {
+.img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.profile_type {
+
 }
